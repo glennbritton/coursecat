@@ -1,0 +1,3 @@
+#!/bin/sh
+mv gradcourselist gradcourselist.bak
+cat gradcourselist.bak |sed 's/ \|//' > gradcourselist

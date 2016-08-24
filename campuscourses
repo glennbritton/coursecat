@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+#
+# NAME
+#
+# DESCRIPTION
+#   
+# ALGORITHM:    make 4 courselists....sg, utm, uts, graduate
+#             from the SIS supplied SIScourses "grepping"
+#            first for the school TERM ie 20149, then 
+#            grep 1-.- courselist  should find all st.george courses 
+#- grep 3-.- courselist  should find all UTSC courses 
+#- grep 5-.- courselist  should find all UTM courses 
+#- grep H-.- courselist  should find all xxx courses
+#- grep Y-.- courselist  should find all yyy courses
+#- grep 0-.- courselist  should find all zzz courses
+## AUTHOR
+#   glenn britton  summer, 2014
+##############################################################
+
+system("/Users/britton/Desktop/perl5/campuscodes");
+print "Enter the semester, coded as yyyy[9,5,1] \n";
+$answer = <STDIN>; 
+chop($answer);
+print "$answer  is what you typed   \n";
+open(COURSELIST, "</Users/britton/Desktop/perl5/SIScourses" );
+open(TERMCOURSES, ">/Users/britton/Desktop/perl5/termcourses" );
+
+#first find the courses from COURSLIST for the particular TERM
+#coded as $answer
+while ($line = <COURSELIST>) {
+($idcode,  $chaff) = split(" ", $line);
+$g1 = unpack ( A5 , $idcode);
+if ($g1 eq $answer) {print "$idcode   $chaff   \n";
+                    print (TERMCOURSES "$idcode    $chaff  \n");
+                    }
+
+}
+close(TERMCOURSES);
+system("/Users/britton/Desktop/perl5/maketermcourses");
+system("/Users/britton/Desktop/perl5/fixgrads");
+#system("/Users/britton/Desktop/perl5/testscript4  $answer");

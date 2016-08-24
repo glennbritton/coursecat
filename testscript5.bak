@@ -1,0 +1,217 @@
+#!/usr/bin/perl
+#
+# NAME
+#
+# DESCRIPTION
+#   
+# ALGORITHM:    unpack, split, concatenation, loop thru file, assoc.array
+# AUTHOR
+#   glenn britton
+##############################################################
+
+
+
+
+
+print "Enter the semester, coded as yyyy[9,1,5] \n";
+$answer = <STDIN>; 
+chop($answer);
+print "$answer  is what you typed   \n";
+# open 4 courselist  files with 4 corresponding coursecode files for reading
+# open 1 OUTPUT file to write to
+open(COURSELIST, "</Users/britton/Desktop/perl4/sgcourselist" );
+open(MCOURSELIST, "</Users/britton/Desktop/perl4/utmcourselist" );
+open(SCOURSELIST, "</Users/britton/Desktop/perl4/utscourselist" );
+open(GCOURSELIST, "</Users/britton/Desktop/perl4/gradcourselist" );
+open(COURSECODE, "</Users/britton/Desktop/perl4/sgcodes" );
+open(MCOURSECODE, "</Users/britton/Desktop/perl4/utmcodes" );
+open(SCOURSECODE, "</Users/britton/Desktop/perl4/utscodes" );
+open(GCOURSECODE, "</Users/britton/Desktop/perl4/gradcodes" );
+open(OUTPUT, ">/Users/britton/Desktop/perl4/whatever" );
+
+print OUTPUT "External_Course_Key|EXTERNAL_CATEGORY_KEY|AVAILABLE_IND\n";
+
+#process the St. George Courses
+while ($line2 = <COURSECODE>) {
+ ($code, $secondary, $primary) = split(' ', $line2);
+ $both .= $primary . ' ' . $secondary;
+ #print "$code  $secondary   $primary  $both \n";
+ $codearray{$code} = $both;
+ ##   sanity check ..codearray values assigned well?
+ print "$codearray{$code} \n";
+
+ #reset the variable to empty string
+ $both = "";
+ }
+
+while ($line = <COURSELIST>) {
+          ($firsthalf, $secondhalf ) = split("Summer", $line);
+
+         ($f1, $f2) = split($answer, $firsthalf);
+         $g1 = unpack ( A3 , $f2);
+
+# $answer is 5 characters...I need first 4, the year
+         $yr = unpack ( A4 , $answer);
+# try to get coursid  from second half of line
+         ($toss, $crsidjunk) = split( "$yr-", $secondhalf);
+         $crsid = unpack ( A3, $crsidjunk );
+         if ($g1 eq $crsid) {
+		($prime, $second ) = split(' ', $codearray{$g1});
+		print OUTPUT "$answer$f2          \|$prime\|Y\n";
+		print OUTPUT "$answer$f2          \|$second\|Y \n";
+                            }
+ 
+   else {
+		($prime, $second ) = split(' ', $codearray{$crsid});
+		print OUTPUT "$answer$f2          \|$prime\|Y\n";
+		print OUTPUT "$answer$f2          \|$second\|Y\n";
+         }
+        
+#         print "$codearray{$g1}\n ";
+#        $g1 var is holding the first 3 letters of the course....can use it
+#        to iteratively match each line in the "codes" file for the each campus  
+        
+	}
+{close(COURSELIST);
+}
+
+{close(COURSECODE);
+}
+
+#process the UTM Courses
+while ($line2 = <MCOURSECODE>) {
+($mcode, $msecondary, $mprimary) = split(' ', $line2);
+$both .= $mprimary . ' ' . $msecondary;
+#print "$mcode  $msecondary   $mprimary  $both \n";
+$mcodearray{$mcode} = $both;
+##   sanity check ..mcodearray values assigned well?
+print "$mcodearray{$mcode} \n";
+
+#reset the variable to empty string
+$both = "";
+  }
+print OUTPUT "\n  UTM COURSES\n";
+
+while ($line = <MCOURSELIST>) {
+          ($firsthalf, $secondhalf ) = split("Summer", $line);
+
+         ($f1, $f2) = split($answer, $firsthalf);
+         $g1 = unpack ( A3 , $f2);
+
+# $answer is 5 characters...I need first 4, the year
+         $yr = unpack ( A4 , $answer);
+# try to get coursid  from second half of line
+         ($toss, $crsidjunk) = split( "$yr-", $secondhalf);
+         $crsid = unpack ( A3, $crsidjunk );
+
+	if ($g1 eq $crsid) {
+	 ($prime, $second ) = split(' ', $mcodearray{$g1});
+        print OUTPUT "$answer$f2          \|$prime\|Y\n";
+        print OUTPUT "$answer$f2          \|$second\|Y \n";
+        }
+        else {
+	($prime, $second ) = split(' ', $mcodearray{$crsid});
+	print OUTPUT "$answer$f2          \|$prime\|Y\n";
+	print OUTPUT "$answer$f2          \|$second\|Y\n";
+	}
+
+	}
+
+{close(MCOURSELIST);
+}
+
+{close(MCOURSECODE);
+}
+
+#process the UTS Courses
+while ($line2 = <SCOURSECODE>) {
+($scode, $ssecondary, $sprimary) = split(' ', $line2);
+$both .= $sprimary . ' ' . $ssecondary;
+#print "$scode  $ssecondary   $sprimary  $both \n";
+$scodearray{$scode} = $both;
+##   sanity check ..scodearray values assigned well?
+print "$scodearray{$scode} \n";
+
+#reset the variable to empty string
+$both = "";
+  }
+print OUTPUT "\n  UTS COURSES\n";
+
+while ($line = <SCOURSELIST>) {
+          ($firsthalf, $secondhalf ) = split("Summer", $line);
+
+         ($f1, $f2) = split($answer, $firsthalf);
+         $g1 = unpack ( A3 , $f2);
+# $answer is 5 characters...I need first 4, the year
+         $yr = unpack ( A4 , $answer);
+# try to get coursid  from second half of line
+         ($toss, $crsidjunk) = split( "$yr-", $secondhalf);
+         $crsid = unpack ( A3, $crsidjunk );
+
+
+ if ($g1 eq $crsid) {
+			($prime, $second ) = split(' ', $scodearray{$g1});
+        print OUTPUT "$answer$f2          \|$prime\|Y\n";
+        print OUTPUT "$answer$f2          \|$second\|Y \n";
+		    }
+	else {
+
+	 ($prime, $second ) = split(' ', $scodearray{$crsid});
+        print OUTPUT "$answer$f2          \|$prime\|Y\n";
+        print OUTPUT "$answer$f2          \|$second\|Y\n";
+	     }
+
+        }
+
+{close(SCOURSELIST);
+}
+
+{close(SCOURSECODE);
+}
+
+
+#process the GRAD Courses
+while ($line2 = <GCOURSECODE>) {
+($gcode, $gsecondary, $gprimary) = split(' ', $line2);
+$both .= $gprimary . ' ' . $gsecondary;
+#print "$gcode  $gsecondary   $gprimary  $both \n";
+$gcodearray{$gcode} = $both;
+##   sanity check ..gcodearray values assigned well?
+print "$gcodearray{$gcode} \n";
+
+#reset the variable to empty string
+$both = "";
+  }
+print OUTPUT "\n  GRAD COURSES\n";
+
+while ($line = <GCOURSELIST>) {
+          ($firsthalf, $secondhalf ) = split("Summer", $line);
+
+         ($f1, $f2) = split($answer, $firsthalf);
+         $g1 = unpack ( A3 , $f2);
+	# $answer is 5 characters...I need first 4, the year
+         $yr = unpack ( A4 , $answer);
+# try to get coursid  from second half of line
+         ($toss, $crsidjunk) = split( "$yr-", $secondhalf);
+         $crsid = unpack ( A3, $crsidjunk );
+
+	if ($g1 eq $crsid) {
+	 ($prime, $second ) = split(' ', $gcodearray{$g1});
+        print OUTPUT "$answer$f2          \|$prime\|Y\n";
+        print OUTPUT "$answer$f2          \|$second\|Y \n";
+	}	
+	else {
+
+	 ($prime, $second ) = split(' ', $gcodearray{$crsid});
+        print OUTPUT "$answer$f2          \|$prime\|Y\n";
+        print OUTPUT "$answer$f2          \|$second\|Y\n";
+            }
+	}
+
+{close(GCOURSELIST);
+}
+
+{close(GCOURSECODE);
+}
+
+exit(0);

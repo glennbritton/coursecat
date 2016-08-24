@@ -1,0 +1,79 @@
+
+-first step is to grep the sis courses source for a particular TERM
+(Summer, Fall Winter) and the year....ie Fall-2014
+and put it in a temporary file, keeping only the first two columns, 
+or everything before the second pipe
+eg.   grep Fall-2014 SIScourses |sed 's/\|N\|.*$//'  |sed 's/\|//' > courselist
+
+using marco's example, 12514 lines in courselist if he were to look for 
+the Fall-2014 term.
+
+
+strategy to reproduce the output file:
+         since the primary and secondary course codes differ depending
+         on which campus the course is offered at, need a way to 
+         process the courselist to identify and/or divide it up accordingly.
+     From what Marco showed me, the alphanumeric character before "-.-"
+     or "-..-" identifies the campus
+Therefore,
+- grep 1-.- courselist  should find all st.george courses  (5812 courses)
+- grep 3-.- courselist  should find all UTSC courses  (1835 courses)
+- grep 5-.- courselist  should find all UTM courses  (2013 courses)
+- grep H-.- courselist  should find all xxx courses  (2007 courses)
+- grep Y-.- courselist  should find all yyy courses  (741 courses)
+- grep 0-.- courselist  should find all zzz courses  ( 7 courses)
+
+cat courselist |grep -v 1-.-|grep -v 3-.-|grep -v 5-.-|grep -v H-.-|grep -v Y-.-|grep -v 0-.-
+|wc -l yields 99 remaining courses with 2-letters between the dashes:
+  H-..-    Y-..-    and TWO SPECIAL CASES  1-..-
+
+Sanity check with "bc"
+5812+1835+2013+2007+741+7+99 =
+12514 
+Therefore, ALL FALL-2014 courses would be mapped to course codes file???
+
+
+-converted "codes" to a flat file named codes
+with numeric prefixes:  1=st.george  3=utsc 5=utm 9=grad
+therefore 
+XActivityCode???  secondary  primary  OR
+courseID [tab]  secondary CategoryID [tab]  primary categoryID
+Marco refers to these with colons instead of tabs from his source...(16nov2015)
+
+- the logic from the Formulas tab of the spreadsheet ....I believe it
+can be coded 
+
+-output file needs a header: External_Course_Key|EXTERNAL_CATEGORY_KEY|AVAILABLE_IND
+-if a course has a primary and secondary "org code", there will be 2 separate lines
+in the output file for each.....might be handy to sort this output file for 
+visual inspection (can see two lines for a course with primary and secondary codes)
+  eg.
+     20149WYT6406HFLEC0101              |TST|Y
+     20149WYT6406HFLEC0101              |WYC|Y
+-all lines in the ouput file need to end in |Y  (availability )  ....trivial
+
+sanity check....look for unique course TERMS...ie 20139 20149 etc
+and run script against them
+
+NB ./aperlscript3 |grep -v \|\| >foo    gets rid of empty lines with no primary key
+
+
+S U M M E R   T E R M  S P E C I F I C A T I O N S
+(not defined until the week of March 23, 2015)
+
+The first column of  the courselist from the SIS database 
+is the  "External Course Key"  the second column is the courseid.
+There are extra characters ( "F" and "S" ) inserted as a prefix
+to the 3-letter portion of the "Courseid"  for the SUMMER term ONLY,
+and not for all courses.   F=Firsthalf    S=Secondhalf
+
+Algorithm 1
+grep "20155F" AND "20155S" on the intermediate termcourses file
+to catch ALL of these exceptions, and process them separately?
+
+WHAT About 3-letter Courseid's  that start with F and S.....
+need to process them normally.
+
+From the main perl script (testscript
+$f2= External Course Key stripped of the year and term prefix eg (20155)
+$g1=unpack(A3,$f2)  first 3 characters of $f2)

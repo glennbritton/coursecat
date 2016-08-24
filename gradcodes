@@ -1,0 +1,308 @@
+ABS  SGS   
+ACT  SGS   
+AEC  SGS   
+AER  SGS   
+AGE  SGS   
+ALA  SGS   
+AMP  SGS   
+ANA  SGS   
+ANT  SGS   
+APD  SGS   
+APM  SGS   
+APS  SGS  APSC 
+ARC  SGS   
+ARH  SGS   
+ASI  SGS   
+AST  SGS   
+BCB  SGS   
+BCH  SGS   
+BIO  SGS   
+BKS  SGS   
+BME  SGS   
+BOT  SGS   
+BTC  SGS   
+CHE  SGS   
+CHL  SGS   
+CHM  SGS   
+CIE  SGS   
+CIN  SGS   
+CIV  SGS   
+CJS  SGS   
+CLA  SGS   
+COL  SGS   
+CON  SGS   
+CPS  SGS   
+CRI  SGS   
+CSB  SGS   
+CSC  SGS   
+CT1  SGS   
+CTL  SGS   
+DEN  SGS   
+DEX  SGS   
+DGC  SGS   
+DMI  SGS   
+DPP  SGS   
+DQP  SGS   
+DRA  SGS   
+DRM  SGS   
+EAQ  OISE_CE  OISE 
+EAS  SGS   
+ECE  SGS  APSC 
+ECO  SGS   
+EDE  SGS   
+EDT  SGS   
+EDU  OISE   
+EDV  SGS   
+EEB  SGS   
+EES  SGS   
+EES  UTSPHYSENVSCI  SGS 
+EMB  EM  TST 
+EMF  EM  TST 
+EMH  EM  TST 
+EMJ  EM  TST 
+EMP  EM  TST 
+EMT  EM  TST 
+ENG  SGS   
+ENV  SGS   
+ERE  SGS   
+ESC  SGS   
+ESS  SGS   
+EST  SGS   
+ETA  SGS   
+ETS  SGS   
+EUR  SGS   
+EXG  SGS   
+EXS  SGS   
+FAH  SGS   
+FAR  SGS   
+FCS  SGS   
+FEC  SGS   
+FIS  SGS  FIS 
+FOR  SGS   
+FRE  SGS   
+FSL  SGS   
+GER  SGS   
+GGR  SGS   
+GLA  SGS   
+GLG  SGS   
+GRK  SGS   
+HAD  SGS   
+HDP  SGS   
+HIS  SGS   
+HMB  SGS   
+HPS  SGS   
+HSJ  SGS   
+HSR  SGS   
+ICB  TST   
+ICF  TST   
+ICH  TST   
+ICJ  TST   
+ICP  TST   
+ICT  TST   
+IES  SGS   
+IFA  SGS   
+IMM  SGS   
+INF  SGS   
+INI  SGS   
+IOS  SGS   
+IRE  SGS   
+ITA  SGS   
+JAC  SGS   
+JAL  SGS   
+JAR  SGS   
+JBB  SGS   
+JBF  SGS   
+JBI  SGS   
+JBP  SGS   
+JBZ  SGS   
+JCB  SGS   
+JCC  SGS   
+JCV  SGS   
+JDB  SGS   
+JDE  SGS   
+JDS  SGS   
+JEB  SGS   
+JEI  SGS   
+JFK  SGS   
+JFS  SGS   
+JGC  SGS   
+JGE  SGS   
+JGI  SGS   
+JGN  SGS   
+JHC  SGS   
+JHE  SGS   
+JHF  SGS   
+JHM  SGS   
+JHP  SGS   
+JIC  SGS   
+JIE  SGS   
+JLA  SGS   
+JLE  SGS   
+JLP  SGS   
+JMC  SGS   
+JMT  SGS   
+JMY  SGS   
+JNC  SGS   
+JNH  SGS   
+JNP  SGS   
+JNR  SGS   
+JNS  SGS   
+JPB  SGS   
+JPD  SGS   
+JPE  SGS   
+JPF  SGS   
+JPG  SGS   
+JPH  SGS   
+JPJ  SGS   
+JPM  SGS   
+JPR  SGS   
+JPV  SGS   
+JPW  SGS   
+JPX  SGS   
+JPY  SGS   
+JRL  SGS   
+JRP  SGS   
+JSA  SGS   
+JSP  SGS   
+JTB  SGS   
+JTC  SGS   
+JTE  SGS   
+JTH  SGS   
+JVP  SGS   
+JXP  SGS   
+JYG  SGS   
+JZB  SGS   
+KMD  SGS   
+KNB  Knox  TST 
+KNF  Knox  TST 
+KNH  Knox  TST 
+KNJ  Knox  TST 
+KNP  Knox  TST 
+KNT  Knox  TST 
+LAN  SGS   
+LAS  SGS   
+LAT  SGS   
+LAW  SGS   
+LHA  SGS   
+LIN  SGS   
+LIS  SGS   
+LMP  SGS   
+LPR  SGS   
+LRQ  SGS   
+MAT  SGS   
+MBP  SGS   
+MGT  SGS   
+MGY  SGS   
+MHI  SGS   
+MIE  SGS  APSC 
+MIN  SGS   
+MMF  SGS   
+MMG  SGS   
+MMI  SGS   
+MMS  SGS   
+MRS  SGS   
+MSA  SGS   
+MSC  SGS   
+MSE  SGS   
+MSL  SGS   
+MST  SGS   
+MUS  SGS   
+NEW  SGS   
+NFS  SGS   
+NMC  SGS   
+NML  SGS   
+NUR  SGS  NUR 
+NUS  SGS   
+OCT  SGS   
+PAS  SGS   
+PCL  SGS   
+PDE  SGS   
+PHC  SGS   
+PHE  SGS   
+PHL  SGS   
+PHM  SGS   
+PHT  SGS   
+PHY  SGS   
+PLA  SGS   
+POL  SGS   
+PPG  SGS   
+PRT  SGS   
+PSL  SGS   
+PSY  SGS   
+REH  SGS   
+REL  SGS   
+RGB  RGT  TST 
+RGF  RGT  TST 
+RGH  RGT  TST 
+RGJ  RGT  TST 
+RGP  RGT  TST 
+RGT  RGT  TST 
+RLG  SGS   
+RSM  SGS   
+RST  SGS   
+RTL  SGS   
+SAB  SAT  TST 
+SAF  SAT  TST 
+SAH  SAT  TST 
+SAJ  SAT  TST 
+SAP  SAT  TST 
+SAS  SGS   
+SAT  SAT  TST 
+SDS  SGS   
+SEM  SGS   
+SES  SGS   
+SLA  SGS   
+SLP  SGS   
+SMB  SMC  TST 
+SMC  SMC  FAS 
+SMF  SMC  TST 
+SMH  SMC  TST 
+SMJ  SMC  TST 
+SMP  SMC  TST 
+SMT  SMC  TST 
+SOC  SGS   
+SPA  SGS   
+SRD  SGS   
+SRM  SGS   
+SSM  UTM  UTMSSM 
+STA  SGS   
+SWK  SGS   
+TAQ  OISE_CE  OISE 
+TPS  SGS   
+TRB  DIV  TST 
+TRD  DIV  TST 
+TRF  SGS   
+TRH  DIV  TST 
+TRJ  DIV  TST 
+TRN  SGS   
+TRP  DIV  TST 
+TRT  DIV  TST 
+TSB  TST   
+TSF  TST   
+TSH  TST   
+TSJ  TST   
+TSL  SGS   
+TSM  TST   
+TSP  TST   
+TST  TST   
+TSX  SGS   
+TSZ  SGS   
+TXT  SGS   
+UNI  SGS   
+URD  SGS   
+USA  SGS   
+VIC  SGS   
+VIS  SGS   
+WDW  SGS   
+WGS  SGS   
+WLP  SGS   
+WLT  SGS   
+WPL  SGS   
+WRT  SGS   
+WYB  WYC   
+WYF  WYC  TST 
+WYH  WYC  TST 
+WYJ  WYC  TST 
+WYP  WYC  TST 
+WYT  WYC  TST 
+ZOO  SGS  TST 

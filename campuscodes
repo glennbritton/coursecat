@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+#
+# NAME
+#
+# DESCRIPTION   creates 4 codes files from master codes file
+#             analogous to 4 blocks of the excel spreadsheet
+#   
+# ALGORITHM:    
+# AUTHOR
+#   glenn britton
+##############################################################
+
+open(COURSECODE, "</Users/britton/Desktop/perl5/codes" );
+open(SGCODES, "> /Users/britton/Desktop/perl5/sgcodes" );
+open(UTSCODES, "> /Users/britton/Desktop/perl5/utscodes" );
+open(UTMCODES, "> /Users/britton/Desktop/perl5/utmcodes" );
+open(GRADCODES, "> /Users/britton/Desktop/perl5/gradcodes" );
+
+while ($line2 = <COURSECODE>) {
+($code, $secondary, $primary) = split(' ', $line2);
+#check the first character of the $code variable 
+#   1 represents a St. George course
+#   3 represents a UTS course
+#   5 represents a UTM course
+#   9 represents a graduate course
+  $firstchar =unpack ( A1 , $code);
+  ($junk, $clippedcode) = split("^.", $code); 
+  if ($firstchar eq '1') { 
+                        print(SGCODES "$clippedcode  $secondary  $primary \n");
+                        }
+   elsif ($firstchar eq '3') {
+                        print (UTSCODES "$clippedcode  $secondary  $primary \n");
+                            } 
+   elsif ($firstchar eq '5') {
+                        print (UTMCODES "$clippedcode  $secondary  $primary \n"); 
+                            } 
+   elsif ($firstchar eq '9') {
+                        print (GRADCODES "$clippedcode  $secondary  $primary \n");
+                            } 
+   else  {
+         print " bad line in codes file!! \n";
+         } 
+  }
+{close(COURSECODE);
+}
+#
+exit(0);

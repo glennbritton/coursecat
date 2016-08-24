@@ -1,0 +1,9 @@
+#!/bin/sh
+grep 1-.- termcourses |sed 's/\|//' >sgcourselist
+grep 1-..- termcourses |sed 's/\|//' >>sgcourselist
+grep 3-.- termcourses |sed 's/\|//' >utscourselist
+grep 5-.- termcourses |sed 's/\|//' >utmcourselist
+grep H-.- termcourses |sed 's/\|//' >gradcourselist
+grep Y-.- termcourses |sed 's/\|//' >>gradcourselist
+grep 0-.- termcourses |sed 's/\|//' >>sgcourselist
+cat termcourses |grep -v 1-.-|grep -v 3-.-|grep -v 5-.-|grep -v H-.-|grep -v Y-.-|grep -v 0-.- >>gradcourselist
