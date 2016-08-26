@@ -85,7 +85,7 @@ $g1=unpack(A3,$f2)  first 3 characters of $f2)
 
 
 Update August 2106
-SPECIAL CASES CURRENTLY REQUIRING MELVIN to 
+SPECIAL CASES CURRENTLY REQUIRING MELVIN to manually add courses to categories/zones in Blackboard.
 Certain courses from the faculty of medicine (and possibly other departments) need to be duplicated
 in the OUTPUT text file with a second "primary categoryID" so that administrators in two different "zones"
 (as Marco calls them) can make changes to courses.   I guess that "primary categoryID" is perhaps
@@ -95,5 +95,7 @@ Immunology is one such SPECIAL case.   All IMM courses are "primary categoryID"=
  Algorithm:
  -run testscript normally, and it will catch all IMM courses (St. George and GRADUATE)
  -get all IMM courses for particular TERM with:   grep 20169IMM SIScourslist >IMMcourses (17 in this case)
+   however, changing the "maketermcourses" script was easier, as it made use of a temp file already
+   containing all courses for the TERM in question, ie "termcourses"   grep IMM termcourses |sed 's/\|//' >immcourselist
  -create a IMMcodes file, and add a section in testscript that runs same logic as UTM, UTS, GRAD, ST.GEORGE
  but pairs IMMcodes file and IMMcourses file to build associative array
