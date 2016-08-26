@@ -5,6 +5,13 @@ and put it in a temporary file, keeping only the first two columns,
 or everything before the second pipe
 eg.   grep Fall-2014 SIScourses |sed 's/\|N\|.*$//'  |sed 's/\|//' > courselist
 
+Here is the head of the SIScourses file:
+External_Course_Key|Course_Id|Available_Ind|Course_Name|Allow_Guest_Ind
+20159ABP100Y1YLEC0101              |Fall-2015-ABP100Y1-Y-LEC0101       |N|Intro to Academic Studies     |N
+20169ABP100Y1YLEC0101              |Fall-2016-ABP100Y1-Y-LEC0101       |N|Intro to Academic Studies     |N
+20155ABS201Y1YLEC0101              |Summer-2015-ABS201Y1-Y-LEC0101     |N|Intro Indigenous Stu          |N
+
+
 using marco's example, 12514 lines in courselist if he were to look for 
 the Fall-2014 term.
 
@@ -40,8 +47,6 @@ XActivityCode???  secondary  primary  OR
 courseID [tab]  secondary CategoryID [tab]  primary categoryID
 Marco refers to these with colons instead of tabs from his source...(16nov2015)
 
-- the logic from the Formulas tab of the spreadsheet ....I believe it
-can be coded 
 
 -output file needs a header: External_Course_Key|EXTERNAL_CATEGORY_KEY|AVAILABLE_IND
 -if a course has a primary and secondary "org code", there will be 2 separate lines
@@ -77,3 +82,18 @@ need to process them normally.
 From the main perl script (testscript
 $f2= External Course Key stripped of the year and term prefix eg (20155)
 $g1=unpack(A3,$f2)  first 3 characters of $f2)
+
+
+Update August 2106
+SPECIAL CASES CURRENTLY REQUIRING MELVIN to 
+Certain courses from the faculty of medicine (and possibly other departments) need to be duplicated
+in the OUTPUT text file with a second "primary categoryID" so that administrators in two different "zones"
+(as Marco calls them) can make changes to courses.   I guess that "primary categoryID" is perhaps
+similar to a "zone" in BlackBoard
+Immunology is one such SPECIAL case.   All IMM courses are "primary categoryID"=FAS (only St.George campus)
+ secondary categoryID IMM,    or graduate course with "primary categoryID"=SGS and NO secondary categoryID
+ Algorithm:
+ -run testscript normally, and it will catch all IMM courses (St. George and GRADUATE)
+ -get all IMM courses for particular TERM with:   grep 20169IMM SIScourslist >IMMcourses (17 in this case)
+ -create a IMMcodes file, and add a section in testscript that runs same logic as UTM, UTS, GRAD, ST.GEORGE
+ but pairs IMMcodes file and IMMcourses file to build associative array
