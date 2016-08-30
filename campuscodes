@@ -10,11 +10,12 @@
 #   glenn britton
 ##############################################################
 
-open(COURSECODE, "</Users/britton/Desktop/perl5/codes" );
-open(SGCODES, "> /Users/britton/Desktop/perl5/sgcodes" );
-open(UTSCODES, "> /Users/britton/Desktop/perl5/utscodes" );
-open(UTMCODES, "> /Users/britton/Desktop/perl5/utmcodes" );
-open(GRADCODES, "> /Users/britton/Desktop/perl5/gradcodes" );
+open(COURSECODE, "</Users/britton/Desktop/perl6/codes" );
+open(SGCODES, "> /Users/britton/Desktop/perl6/sgcodes" );
+open(UTSCODES, "> /Users/britton/Desktop/perl6/utscodes" );
+open(UTMCODES, "> /Users/britton/Desktop/perl6/utmcodes" );
+open(GRADCODES, "> /Users/britton/Desktop/perl6/gradcodes" );
+open(IMMCODES, "> /Users/britton/Desktop/perl6/immcodes" );
 
 while ($line2 = <COURSECODE>) {
 ($code, $secondary, $primary) = split(' ', $line2);
@@ -23,6 +24,7 @@ while ($line2 = <COURSECODE>) {
 #   3 represents a UTS course
 #   5 represents a UTM course
 #   9 represents a graduate course
+#   A represents a special case
   $firstchar =unpack ( A1 , $code);
   ($junk, $clippedcode) = split("^.", $code); 
   if ($firstchar eq '1') { 
@@ -36,7 +38,10 @@ while ($line2 = <COURSECODE>) {
                             } 
    elsif ($firstchar eq '9') {
                         print (GRADCODES "$clippedcode  $secondary  $primary \n");
-                            } 
+                            }
+   elsif ($firstchar eq 'A') { 
+                        print (IMMCODES "$clippedcode  $secondary  $primary \n");
+                            }
    else  {
          print " bad line in codes file!! \n";
          } 

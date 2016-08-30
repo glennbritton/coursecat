@@ -17,13 +17,13 @@
 #   glenn britton  summer, 2014
 ##############################################################
 
-system("/Users/britton/Desktop/perl5/campuscodes");
+system("/Users/britton/Desktop/perl6/campuscodes");
 print "Enter the semester, coded as yyyy[9,5,1] \n";
 $answer = <STDIN>; 
 chop($answer);
 print "$answer  is what you typed   \n";
-open(COURSELIST, "</Users/britton/Desktop/perl5/SIScourses" );
-open(TERMCOURSES, ">/Users/britton/Desktop/perl5/termcourses" );
+open(COURSELIST, "</Users/britton/Desktop/perl6/SIScourses" );
+open(TERMCOURSES, ">/Users/britton/Desktop/perl6/termcourses" );
 
 #first find the courses from COURSLIST for the particular TERM
 #coded as $answer
@@ -36,6 +36,6 @@ if ($g1 eq $answer) {print "$idcode   $chaff   \n";
 
 }
 close(TERMCOURSES);
-system("/Users/britton/Desktop/perl5/maketermcourses");
-system("/Users/britton/Desktop/perl5/fixgrads");
-#system("/Users/britton/Desktop/perl5/testscript4  $answer");
+system("/Users/britton/Desktop/perl6/maketermcourses");
+system("/Users/britton/Desktop/perl6/fixgrads");
+#system("/Users/britton/Desktop/perl6/testscript4  $answer");

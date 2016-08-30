@@ -6,4 +6,8 @@ grep 5-.- termcourses |sed 's/\|//' >utmcourselist
 grep H-.- termcourses |sed 's/\|//' >gradcourselist
 grep Y-.- termcourses |sed 's/\|//' >>gradcourselist
 grep 0-.- termcourses |sed 's/\|//' >>sgcourselist
+#special cases below 
+grep IMM termcourses |sed 's/\|//' >immcourselist
+grep CRI termcourses |sed 's/\|//' >>immcourselist
+grep IRE termcourses |sed 's/\|//' >>immcourselist
 cat termcourses |grep -v 1-.-|grep -v 3-.-|grep -v 5-.-|grep -v H-.-|grep -v Y-.-|grep -v 0-.- >>gradcourselist

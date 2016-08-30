@@ -37,7 +37,7 @@ CSB  SGS
 CSC  SGS   
 CT1  SGS   
 CTL  SGS   
-DEN  SGS   
+DEN  SGS  DEN 
 DEX  SGS   
 DGC  SGS   
 DMI  SGS   
@@ -182,7 +182,7 @@ KNT  Knox  TST
 LAN  SGS   
 LAS  SGS   
 LAT  SGS   
-LAW  SGS   
+LAW  SGS  LAW 
 LHA  SGS   
 LIN  SGS   
 LIS  SGS   
@@ -281,7 +281,7 @@ TSB  TST
 TSF  TST   
 TSH  TST   
 TSJ  TST   
-TSL  SGS   
+TSL  SGS  WDW-T 
 TSM  TST   
 TSP  TST   
 TST  TST   
@@ -290,9 +290,9 @@ TSZ  SGS
 TXT  SGS   
 UNI  SGS   
 URD  SGS   
-USA  SGS   
-VIC  SGS   
-VIS  SGS   
+USA  SGS  WDW-T 
+VIC  SGS  WDW-T 
+VIS  SGS  WDW-T 
 WDW  SGS   
 WGS  SGS   
 WLP  SGS   
