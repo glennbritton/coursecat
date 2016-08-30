@@ -16,6 +16,7 @@ a. the text file codes may need updating as courses are added
     3-UTS
     5-UTM
     9-graduate courses
+    A-special case courses - listed twice in output file with different "primary" codes
    
 
 1. run campuscourses  script
